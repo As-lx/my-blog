@@ -1,32 +1,37 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div id="app" class="app-container">
+    <Layout>
+      <template #left>
+        <div class="aside">
+          <SiteAside></SiteAside>
+        </div>
+      </template>
+      <div class="main">
+        主区域
+      </div>
+    </Layout>
+    </Layout>
   </div>
 </template>
-
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+  import Layout from "./components/layout/index.vue"
+  import SiteAside from "./components/SiteAside/index"
+  import "./styles/global.less"
+  export  default {
+    name:"App",
+    components:{
+      Layout,
+      SiteAside
     }
   }
-}
+</script>
+<style scoped lang="less">
+ @import "~@/styles/mixin.less";
+  .app-container{
+    .self-fill(fixed);
+  }
+  .aside{
+    width: 250px;
+    height: 100%;
+  }
 </style>

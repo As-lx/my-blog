@@ -4,7 +4,15 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "test:pager": "vue serve ./src/components/pager/test.vue",
+    "test:empty": "vue serve ./src/components/empty/test.vue",
+    "test:imageLoader": "vue serve ./src/components/imageLoader/test.vue",
+    "test:concat": "vue serve src/components/SiteAside/concat/test.vue",
+    "test:menu": "vue serve src/components/SiteAside/menu/test.vue",
+    "test:siteAside": "vue serve src/components/SiteAside/test.vue",
+    "test:layout": "vue serve src/components/layout/test.vue"
+
   },
   "dependencies": {
     "core-js": "^3.6.5",
