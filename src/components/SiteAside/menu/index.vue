@@ -1,12 +1,11 @@
 <template>
   <nav class="menu-container">
-    <a :href="item.link" :class="{selected:isSelected(item)}" v-for="(item,index) in items" :key="index">
+    <router-link  :exact="item.exact" :to="{name:item.name}"  v-for="(item,index) in items" :key="index">
       <div class="icon" >
         <Icon :type="item.icon"></Icon>
       </div>
       <span>{{item.title}}</span>
-    </a>
-
+    </router-link>
   </nav>
 </template>
 
@@ -17,47 +16,45 @@
     data(){
       return {
         items:[{
+          name:"Home",
           link:"/",
           title:"首页",
-          icon:"home"
+          icon:"home",
+          exact:true
         },
           {
+            name:"Blog",
           link:"/blog",
           title:"文章",
           icon:"blog",
-            startWith:true
+          exact:true
         },
           {
+            name:"About",
           link:"/about",
           title:"关于我",
-          icon:"about"
+          icon:"about",
+            exact:false
         },
           {
+            name:"Project",
           link:"/project",
           title:"项目&效果",
-          icon:"code"
+          icon:"code",
+            exact:true
         },
           {
+            name:"Message",
             link:"/message",
             title:"留言板",
-            icon:"chat"
+            icon:"chat",
+            exact:true
           }
         ]
       }
     },
     components:{
       Icon,
-    },
-    methods:{
-      isSelected(item){
-        let link=item.link.toLowerCase();
-        let curPath=location.pathname.toLowerCase();
-         if(item.startWith){
-           return curPath.startsWith(link);
-         }else{
-           return curPath===link;
-         }
-      }
     }
   }
 </script>
@@ -78,7 +75,7 @@
       &:hover{
         color: #fff;
       }
-      &.selected{
+      &.router-link-active{
         background-color: darken(@words,3%);
       }
     }

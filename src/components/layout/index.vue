@@ -18,10 +18,12 @@
     display: flex;
     .left,.right{
       flex:0 0 auto;
+      height: 100%;
     }
     .main{
       flex:1 1 auto;
       overflow: hidden;
+      height: 100%;
     }
   }
 </style>
