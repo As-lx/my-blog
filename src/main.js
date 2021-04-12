@@ -8,7 +8,20 @@ import isLoading from "./directives/isLoading";
 Vue.config.productionTip = false;
 import showMessage from "./utils/showMessage"
 Vue.prototype.$showMessage=showMessage;
-Vue.directive("Loading",isLoading)
+Vue.directive("Loading",isLoading);
+import * as getData from "./api/blog";
+getData.getBlog("1").then(res=>{
+  console.log(res)});
+getData.postComment({
+  nickname:"昵称",
+  content:"评论内容",
+  blogId:"123"
+}).then(res=>{
+  console.log(res)
+})
+getData.getComments("123").then(res=>{
+  console.log(res)
+})
 const vm=new Vue({
   router,
   render: h => h(App)

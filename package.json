@@ -12,12 +12,14 @@
     "test:menu": "vue serve src/components/SiteAside/menu/test.vue",
     "test:siteAside": "vue serve src/components/SiteAside/test.vue",
     "test:layout": "vue serve src/components/layout/test.vue",
-    "test:loading": "vue serve src/components/loading/test.vue"
+    "test:loading": "vue serve src/components/loading/test.vue",
+    "test:rightList": "vue serve src/views/blog/components/test.vue"
   },
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "mockjs": "^1.1.0",
+    "querystring": "^0.2.1",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0"
   },

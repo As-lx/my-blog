@@ -1,10 +1,26 @@
 <template>
-  <h1>文章</h1>
+  <Layout>
+    <BlogList></BlogList>
+    <template #right>
+     <BlogCategory></BlogCategory>
+    </template>
+  </Layout>
 </template>
 
 <script>
+  import Layout from "@/components/layout/index";
+  import BlogList from "./components/blogList";
+  import BlogCategory from "./components/blogCategory";
   export default {
-    name: "index"
+    name: "index",
+    components:{
+      Layout,
+      BlogCategory,
+      BlogList
+    },
+    created() {
+      // console.log(this.$route)
+    }
   }
 </script>
 
