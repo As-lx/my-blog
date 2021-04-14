@@ -3,7 +3,7 @@ import qs from "querystring"
 Mock.mock("/api/blogtype","get",{
   code:0,
   msg:"",
-  "data|10-20":[
+  "data|10-15":[
     {
       "id|+1":1,
       name: "分类@id",
@@ -29,7 +29,7 @@ Mock.mock(/^\/api\/blog(\?.+)?$/,"get",function (options) {
                    },
         "scanNumber|0-200": 0,
         "commentNumber|0-20": 0,
-        "thumb|1": [Mock.Random.image("300x250","#000","#fff","No Image"),null],
+        "thumb|1": ["@image(300x250, @color, #fff, @natural)",null],
         createDate:"@date()"
       }]
     }
@@ -48,7 +48,7 @@ Mock.mock(/^\/api\/blog\/[^/]+$/,"get",{
     description: "@cparagraph(1, 10)",
     "scanNumber|0-10000": 0,
     "commentNumber|0-100": 0,
-    createDate: "@date('T')",
+    createDate: "@date()",
     toc: [
       { name: "概述", anchor: "article-md-title-1" },
       {
@@ -269,7 +269,7 @@ Mock.mock("/api/comment","post",{
     id: "@guid",
     nickname: "@cname",
     content: "@cparagraph(1, 10)",
-    createDate: Date.now(),
+    createDate:  "@now()",
     "avatar|1": [
       "https://qiheizhiya.oss-cn-shenzhen.aliyuncs.com/image/avatar6.jpg",
       "https://qiheizhiya.oss-cn-shenzhen.aliyuncs.com/image/avatar4.jpg",
@@ -284,13 +284,13 @@ Mock.mock(/^\/api\/comment\/?(\?.+)?$/,"get",function (options) {
     code: 0,
     msg: "",
     data: {
-      "total|50-200": 0,
+      "total|50": 0,
       [`rows|${query.limit||10}`]:[
           {
             id: "@guid",
             nickname: "@cname",
             content: "@cparagraph(1, 10)",
-            createDate: Date.now(),
+            createDate: "@now()",
             "avatar|1": [
               "https://qiheizhiya.oss-cn-shenzhen.aliyuncs.com/image/avatar6.jpg",
               "https://qiheizhiya.oss-cn-shenzhen.aliyuncs.com/image/avatar4.jpg",

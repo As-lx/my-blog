@@ -13,11 +13,13 @@
     "test:siteAside": "vue serve src/components/SiteAside/test.vue",
     "test:layout": "vue serve src/components/layout/test.vue",
     "test:loading": "vue serve src/components/loading/test.vue",
-    "test:rightList": "vue serve src/views/blog/components/test.vue"
+    "test:rightList": "vue serve src/views/blog/components/test.vue",
+    "test:testButton": "vue serve src/TestLoadingButton.vue"
   },
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "highlight.js": "^10.7.2",
     "mockjs": "^1.1.0",
     "querystring": "^0.2.1",
     "vue": "^2.6.11",

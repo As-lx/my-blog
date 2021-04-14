@@ -9,7 +9,6 @@
   import RightList from "./RightList";
   import fetchData from "../../../mixins/fetchData";
   import {getBlogCategory} from "../../../api/blog";
-
   export default {
     mixins:[fetchData([])],
     name: "blogCategory",

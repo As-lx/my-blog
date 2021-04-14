@@ -1,10 +1,10 @@
 <template>
-  <div class="blog-list-container" ref="container" v-loading="isLoading">
+  <div class="blog-list-container" ref="mainContainer" v-loading="isLoading">
     <ul>
       <li v-for="(item,index) in data.rows" :key="index">
         <div class="thumb" v-if="item.thumb">
           <router-link :to="{name:'BlogDetail',params:{ blogId:item.id}}">
-            <img :src="item.thumb" :alt="item.title" :title="item.title">
+            <img v-lazy="item.thumb" :alt="item.title" :title="item.title">
           </router-link>
         </div>
         <div class="blogInfo">
@@ -36,9 +36,9 @@
   import Pager from "../../../components/Pager";
   import fetchData from "../../../mixins/fetchData";
   import {getBlogs} from "../../../api/blog";
-
+  import mainScroll from "../../../mixins/mainScroll";
   export default {
-    mixins:[fetchData([])],
+    mixins:[fetchData([]),mainScroll("mainContainer")],
     name: "blogList",
     components:{
       Pager
@@ -88,13 +88,10 @@
       async $route(){
         this.isLoading=true;
         //滚动高度为0
-        this.$refs.container.scrollTop=0;
+        this.$refs.mainContainer.scrollTop=0;
        this.data= await this.fetchData();
-       this.isLoading=false
+       this.isLoading=false;
       }
-    },
-    created() {
-      // console.log(this.routeInfo);
     }
   }
 </script>

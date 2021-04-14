@@ -43,6 +43,9 @@
        font-size: 12px;
        color:@gray;
      }
+     span{
+       cursor: pointer;
+     }
      .active{
        color: @warn;
      }

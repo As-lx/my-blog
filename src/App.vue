@@ -10,17 +10,20 @@
         <router-view></router-view>
       </div>
     </Layout>
+    <ToTop></ToTop>
   </div>
 </template>
 <script>
-  import Layout from "./components/layout/index.vue"
-  import SiteAside from "./components/SiteAside/index"
-  import "./styles/global.less"
+  import Layout from "./components/layout/index.vue";
+  import SiteAside from "./components/SiteAside/index";
+  import ToTop from "./components/toTop/index";
+  import "./styles/global.less";
   export  default {
     name:"App",
     components:{
       Layout,
-      SiteAside
+      SiteAside,
+      ToTop
     }
   }
 </script>
