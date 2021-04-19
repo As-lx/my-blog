@@ -5,7 +5,6 @@ let imgs=[];
 function setImage(img) {
   img.dom.src=defaultGif; //先使用默认图片
   //处理图片
-  console.log(img.dom.src)
   //document.documentElement.clientHeight视窗高度
   const clientHeight=document.documentElement.clientHeight;
   const rect=img.dom.getBoundingClientRect();

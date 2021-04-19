@@ -1,31 +1,31 @@
 <template>
      <ul class="concat-container">
        <li>
-         <a href="https://github.com/As-lx">
+         <a :href="data.github" target="_blank">
            <div class="icon">
              <Icon type="github"></Icon>
            </div>
-           <span>As-lx</span>
+           <span>{{data.githubName}}</span>
          </a>
        </li>
        <li>
-         <a href="mailto:gis_lx@163.com">
+         <a :href="`mailto:${data.mail}`">
            <div class="icon">
              <Icon type="mail"></Icon>
            </div>
-           <span>gis_lx@163.com</span>
+           <span>{{data.mail}}</span>
          </a>
        </li>
        <li>
-         <a href="tencent://message/?Menu=yes&uin=1051663041&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45">
+         <a :href="`tencent://message/?Menu=yes&uin=${data.qq}&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45`">
            <div class="icon">
              <Icon type="qq"></Icon>
            </div>
-           <span>1051663041</span>
+           <span>{{data.qq}}</span>
          </a>
           <!--         弹出图片-->
          <div class="pop qqpop">
-           <img src="../../../../public/img/qq.png" alt="">
+           <img :src="data.qqQrCode" alt="">
          </div>
        </li>
        <li>
@@ -33,11 +33,11 @@
            <div class="icon weixin">
              <Icon type="weixin"></Icon>
            </div>
-           <span>18297406835</span>
+           <span>{{data.weixin}}</span>
          </a>
-          <!--         弹出图片-->
+          <!--弹出图片-->
          <div class="pop">
-           <img src="../../../../public/img//weChat.png" alt="">
+           <img :src="data.weixinQrCode" alt="">
          </div>
        </li>
      </ul>
@@ -45,11 +45,13 @@
 
 <script>
   import Icon from "../../icon/Icon";
+  import {mapState} from "vuex";
   export default {
     name: "index",
     components:{
       Icon
-    }
+    },
+    computed:mapState("setting",["data"])
   }
 
 </script>

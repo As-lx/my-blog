@@ -1,7 +1,7 @@
 <template>
-  <div class="SiteAside-container">
-    <Avatar url="https://pics2.baidu.com/feed/29381f30e924b899dc8312709eb644930b7bf676.jpeg?token=c1086c61e43fec886c672428052e955b"></Avatar>
-    <h1 class="title">As的blog</h1>
+  <div class="SiteAside-container" v-if="data">
+    <Avatar :url="data.avatar"></Avatar>
+    <h1 class="title">{{data.siteTitle}}</h1>
     <Menu></Menu>
     <Concat></Concat>
   </div>
@@ -9,15 +9,17 @@
 
 <script>
   import Avatar from "../avatar/Avatar";
-  import Menu from "./menu"
-  import Concat from "./concat"
+  import Menu from "./menu";
+  import Concat from "./concat";
+  import {mapState} from "vuex";
   export default {
     name: "index",
     components:{
       Avatar,
       Concat,
       Menu
-    }
+    },
+    computed:mapState("setting",["data"])
   }
 </script>
 

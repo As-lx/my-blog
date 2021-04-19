@@ -1,3 +1,4 @@
+
 module.exports={
   // devServer:{
   //   proxy:{
@@ -6,4 +7,5 @@ module.exports={
   //     // }
   //   }
   // }
+  configureWebpack:require("./webpack.config")
 }

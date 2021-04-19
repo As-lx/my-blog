@@ -2,10 +2,10 @@ export default function (refValue) {
   return {
     mounted(){
      this.$bus.$on("setMainScroll",this.handleSetMainScroll);
-     this.$refs[refValue].addEventListener("scroll",this.handleScroll);
+     this.$refs[refValue].addEventListener("scroll",this.handleMainScroll);
     },
     methods:{
-      handleScroll(){
+      handleMainScroll(){
         this.$bus.$emit("mainScroll",this.$refs[refValue]);
       },
       handleSetMainScroll(scrollTop){

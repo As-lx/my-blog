@@ -1,0 +1,16 @@
+import Vue from "vue";
+import {Store,install} from "vuex";
+import banner from "./banner";
+import setting from "./setting";
+import project from "./project"
+if(!window.Vuex){
+  install(Vue);
+}
+export default new Store({
+  modules:{
+    banner,
+    setting,
+    project
+  },
+  strict:true
+})

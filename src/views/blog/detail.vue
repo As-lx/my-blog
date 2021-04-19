@@ -20,6 +20,7 @@
   import BlogToc from  "./components/blogtoc";
   import BlogComment from "./components/blogComment";
   import mainScroll from "../../mixins/mainScroll";
+  import titleControl from "../../utils/titleControl";
   export default {
     name: "detail",
     mixins:[fetchData(null),mainScroll("mainContainer")],
@@ -34,7 +35,14 @@
     },
     methods:{
       async fetchData(){
-        return await getBlog(this.$route.params.blogId);
+        let resp= await getBlog(this.$route.params.blogId);
+        if(!resp){
+          //文章不存在
+          this.$router.push("/404");
+          return
+        }
+        titleControl.setRouterTitle(resp.title)
+        return resp;
       }
     },
     updated(){

@@ -1,5 +1,5 @@
 <template>
-  <div class="home-container"  v-loading="isLoading" ref="container" @wheel="handleWheel" @transitionend="transitionEnd">
+  <div class="home-container"  v-loading="loading" ref="container" @wheel="handleWheel" @transitionend="transitionEnd">
     <ul class="carousel-container" :style="{marginTop}">
       <li v-for="item in data" :key="item.id">
         <Carouselitem :ref='"showItem"+item.id ':carousel="item"></Carouselitem>
@@ -21,10 +21,9 @@
   import {getBanners} from "@/api/banner";
   import Carouselitem from "./Carouselitem";
   import Icon from "../../components/icon/Icon";
-  import fetchData from "../../mixins/fetchData";
+  import {mapState} from "vuex";
   export default {
     name: "index",
-    mixins:[fetchData([])],
     data(){
       return{
         index:1,  //当前显示第几张
@@ -39,16 +38,15 @@
     computed: {
       marginTop() {
         return -(this.index) * (this.containerHeight) + "px";
-      }
+      },
+      ...mapState("banner",["loading","data"])
     },
     // async created(){
     //   this.banners=await getBanners();
     //   this.isLoading=false
     // },
     methods:{
-      async fetchData(){
-          return await getBanners();
-      },
+
       switchTo(i){
         this.index=i;
       },
@@ -90,6 +88,9 @@
       handleResize(){
         this.containerHeight=this.$refs["container"].clientHeight;
       }
+    },
+    created() {
+      this.$store.dispatch("banner/fetchBanner")
     },
     mounted() {
       this.containerHeight=this.$refs.container.clientHeight;
