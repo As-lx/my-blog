@@ -7,5 +7,6 @@ module.exports={
   //     // }
   //   }
   // }
-  configureWebpack:require("./webpack.config")
+  configureWebpack:require("./webpack.config"),
+  publicPath:"/"
 }
