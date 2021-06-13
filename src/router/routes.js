@@ -11,15 +11,15 @@ configure({
   showSpinner: false,  //是否显示加载小圆圈
 })
 function delay(duration) {
-  return new Promise((resolve => {
-    setTimeout(()=>{},duration)
-  }))
+  return new Promise((resolve) => {
+    setTimeout(()=>{resolve()},duration)
+  })
 }
 function getPageComponent(pageCompResolve) {
     return async ()=>{
       // console.log("组件开始加载");
       start();
-      if(process.env.Node_ENV==="development"){
+      if(process.env.NODE_ENV==="development"){
         await delay(2000)
       }
       const comp=await pageCompResolve();

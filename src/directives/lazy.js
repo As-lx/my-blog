@@ -1,6 +1,6 @@
 import eventBus from "@/eventBus";
 import debounce from "@/utils/deboundce.js";
-import defaultGif from "../../public/img/default.gif"
+import defaultGif from "../../public/img/default.gif";
 let imgs=[];
 function setImage(img) {
   img.dom.src=defaultGif; //先使用默认图片
